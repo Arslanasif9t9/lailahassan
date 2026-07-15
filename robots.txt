@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://visualcraft.studio/sitemap.xml
