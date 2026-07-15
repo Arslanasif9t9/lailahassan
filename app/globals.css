@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ============ DESIGN TOKENS (design.md) ============ */
+:root {
+  --bg: #ffffff;
+  --bg2: #f8fafc;
+  --card: #ffffff;
+  --txt: #111827;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 40px rgba(37, 99, 235, 0.14);
+}
+
+[data-theme="dark"] {
+  --bg: #0b1120;
+  --bg2: #0f172a;
+  --card: #111c33;
+  --txt: #f1f5f9;
+  --muted: #94a3b8;
+  --line: rgba(148, 163, 184, 0.15);
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 12px 40px rgba(59, 130, 246, 0.2);
+}
+
+@theme inline {
+  --color-primary: #0f172a;
+  --color-navy: #0b1120;
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-card: var(--card);
+  --color-txt: var(--txt);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-hero-float: heroFloat 14s ease-in-out infinite alternate;
+  --animate-orb: orb 10s ease-in-out infinite alternate;
+  --animate-pulse-dot: pulseDot 2s infinite;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes heroFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-3%, 3%) scale(1.08); }
+}
+@keyframes orb {
+  from { transform: translateY(0); }
+  to { transform: translateY(-36px); }
+}
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  50% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--font-body);
+  transition: background 0.4s, color 0.4s;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+}
+
+/* card shadows via tokens */
+.card-shadow { box-shadow: var(--shadow); }
+.card-shadow-hover:hover { box-shadow: var(--shadow-hover); }
+
+/* accent text gradient */
+.text-grad {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* marquee edge fade */
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* hero grid overlay */
+.hero-grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* hide scrollbar on swipeable filter row (mobile app feel) */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* safe area for mobile bottom nav (PWA / notch phones) */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
