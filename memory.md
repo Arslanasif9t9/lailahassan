@@ -9,6 +9,10 @@
 - **Currently Working On:** — (waiting for client: real content + more video-editor info)
 - **Blocked On:** Client will provide real videos (YouTube IDs), testimonials, stats, Calendly link, domain
 
+## Rebrand (2026-07-15)
+- Brand name = **Laila Hassan** (site.ts, metadata, manifest, sitemap/robots) — deployed live & verified.
+- Email/phone still PLACEHOLDER (hello@lailahassan.studio) — replace in data/site.ts when client provides real ones.
+
 ## Deploy Notes (2026-07-15)
 - GitHub Pages = static hosting → `npm run deploy:pages` builds static export (GITHUB_PAGES=true, basePath /lailahassan, app/api excluded) and pushes `out/` to gh-pages branch.
 - On the live static site the contact form falls back to opening the visitor's email app (mailto) since there is no server; on Vercel/localhost the real API works.
