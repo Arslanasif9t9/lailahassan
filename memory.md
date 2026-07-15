@@ -3,9 +3,16 @@
 > AI must update this file after every completed task.
 
 ## Current Status
-- **Current Phase:** ALL PHASES COMPLETE (0–9 code side) ✅
+- **Current Phase:** ALL PHASES COMPLETE + DEPLOYED LIVE ✅
+- **Live URL:** https://arslanasif9t9.github.io/lailahassan/
+- **GitHub Repo:** https://github.com/Arslanasif9t9/lailahassan (branch: master; deploys from gh-pages branch)
 - **Currently Working On:** — (waiting for client: real content + more video-editor info)
 - **Blocked On:** Client will provide real videos (YouTube IDs), testimonials, stats, Calendly link, domain
+
+## Deploy Notes (2026-07-15)
+- GitHub Pages = static hosting → `npm run deploy:pages` builds static export (GITHUB_PAGES=true, basePath /lailahassan, app/api excluded) and pushes `out/` to gh-pages branch.
+- On the live static site the contact form falls back to opening the visitor's email app (mailto) since there is no server; on Vercel/localhost the real API works.
+- To redeploy after any change: `git add -A; git commit; git push` (code) + `npm run deploy:pages` (live site).
 
 ## Completed
 
