@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://visualcraft.studio/sitemap.xml
+Sitemap: https://arslanasif9t9.github.io/lailahassan/sitemap.xml
