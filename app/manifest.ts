@@ -7,8 +7,8 @@ const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "VisualCraft — Video Editing Studio",
-    short_name: "VisualCraft",
+    name: "Laila Hassan — Video Editing Studio",
+    short_name: "Laila Hassan",
     description:
       "Premium video editing for brands, creators and agencies. Turning raw footage into high-converting content.",
     start_url: `${bp}/`,

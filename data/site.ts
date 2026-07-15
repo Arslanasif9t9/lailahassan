@@ -1,7 +1,8 @@
 export const site = {
-  name: "VisualCraft",
+  name: "Laila Hassan",
   tagline: "Premium Video Editing Studio",
-  email: "hello@visualcraft.studio",
+  // TODO: replace with Laila's real email when available
+  email: "hello@lailahassan.studio",
   // Calendly / Cal.com booking link — replace with your real link
   bookCallUrl: "#contact",
   // Drop a compressed hero video at /public/videos/hero.mp4 (max ~5MB, H.264)
@@ -13,7 +14,7 @@ export const site = {
     { label: "LinkedIn", href: "https://linkedin.com/", icon: "linkedin" },
     { label: "YouTube", href: "https://youtube.com/", icon: "youtube" },
     { label: "Behance", href: "https://behance.net/", icon: "behance" },
-    { label: "Email", href: "mailto:hello@visualcraft.studio", icon: "mail" },
+    { label: "Email", href: "mailto:hello@lailahassan.studio", icon: "mail" },
   ],
   trustedBy: [
     "YouTube Creators",
