@@ -6,8 +6,9 @@
 - **Current Phase:** BACKEND + ADMIN PANEL (Supabase CMS) added — 2026-07-21 ✅ (pending client Supabase keys)
 - **Live URL:** https://arslanasif9t9.github.io/lailahassan/
 - **GitHub Repo:** https://github.com/Arslanasif9t9/lailahassan (branch: master; deploys from gh-pages branch)
-- **Currently Working On:** Supabase backend + `/admin` CMS (branch `worktree-supabase-admin-panel` → draft PR)
-- **Blocked On:** User must create a Supabase project, run `supabase/schema.sql`, add an admin user, and paste `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` into `.env.local` (see `supabase/README.md`), then `npm run deploy:pages`
+- **Currently Working On:** — (Supabase backend + `/admin` CMS DEPLOYED LIVE 2026-07-21)
+- **Live admin:** https://arslanasif9t9.github.io/lailahassan/admin (Supabase project `ieczdbioulnvlvtvjqpv`; login = admin user created in Supabase Auth)
+- **Deployed from feature branch** `worktree-supabase-admin-panel` (PR #1) — still needs merging into `master` so master isn't behind live. `.env.local` (Supabase keys) lives only in that worktree, NOT committed.
 
 ## Rebrand (2026-07-15)
 - Brand name = **Laila Hassan** (site.ts, metadata, manifest, sitemap/robots) — deployed live & verified.
