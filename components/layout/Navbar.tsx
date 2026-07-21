@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { site } from "@/data/site";
+import { useContent } from "@/components/providers/ContentProvider";
 
 const links = [
   { href: "#services", label: "Services" },
@@ -16,6 +16,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggle } = useTheme();
+  const { site } = useContent();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);

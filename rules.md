@@ -11,6 +11,7 @@
 - `next/font` (Space Grotesk + Inter)
 - `zod` (form validation)
 - `resend` or Formspree (contact form email) — only when contact phase starts
+- `@supabase/supabase-js` (backend/CMS: content, auth, storage, leads) — ADDED 2026-07-21, user-approved
 
 ### Patterns
 - Design tokens as CSS variables (colors, spacing, radii) — single source in `globals.css`.
@@ -28,7 +29,7 @@
 - ❌ Heavy hero videos (> 4–6 MB); compress to ~1080p H.264/webm.
 - ❌ Inline styles (except dynamic animation values).
 - ❌ `any` types; no `@ts-ignore`.
-- ❌ Client-side data fetching for static content.
+- ❌ Client-side data fetching for static content. *(Exception 2026-07-21, user-approved: the Supabase CMS fetches live content client-side ON TOP of the baked `data/*.ts` defaults — the defaults still render in the static HTML, so SEO + first paint are preserved.)*
 - ❌ Layout shift: always set width/height/aspect-ratio on media.
 - ❌ Animations that block reading (max 0.6s entrance, subtle easing).
 

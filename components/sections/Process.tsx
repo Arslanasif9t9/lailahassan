@@ -1,8 +1,11 @@
+"use client";
+
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { processSteps } from "@/data/stats";
+import { useContent } from "@/components/providers/ContentProvider";
 
 export function Process() {
+  const { processSteps } = useContent();
   return (
     <section id="process" className="scroll-mt-16 py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">

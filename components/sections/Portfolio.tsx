@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { VideoModal } from "@/components/ui/VideoModal";
-import { categories, projects, type Project } from "@/data/projects";
+import { categories, type Project } from "@/data/projects";
+import { useContent } from "@/components/providers/ContentProvider";
 
 /**
  * Filterable portfolio grid.
@@ -15,6 +16,7 @@ import { categories, projects, type Project } from "@/data/projects";
  * the user clicks a card — exactly how YouTube keeps pages fast.
  */
 export function Portfolio() {
+  const { projects } = useContent();
   const [filter, setFilter] = useState<string>("all");
   const [openProject, setOpenProject] = useState<Project | null>(null);
 

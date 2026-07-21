@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { faqs } from "@/data/faqs";
+import { useContent } from "@/components/providers/ContentProvider";
 
 export function FAQ() {
+  const { faqs } = useContent();
   const [open, setOpen] = useState<number | null>(null);
 
   return (

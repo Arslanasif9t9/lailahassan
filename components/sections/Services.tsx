@@ -1,7 +1,9 @@
+"use client";
+
 import { Clapperboard, Zap, TrendingUp, Home, Briefcase, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { services } from "@/data/services";
+import { useContent } from "@/components/providers/ContentProvider";
 
 const iconMap = {
   film: Clapperboard,
@@ -13,6 +15,7 @@ const iconMap = {
 } as const;
 
 export function Services() {
+  const { services } = useContent();
   return (
     <section id="services" className="scroll-mt-16 bg-bg2 py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">

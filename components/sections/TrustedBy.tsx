@@ -1,9 +1,12 @@
+"use client";
+
 import { Play, Rocket, Building2, ShoppingBag, Mic, Home, Briefcase } from "lucide-react";
-import { site } from "@/data/site";
+import { useContent } from "@/components/providers/ContentProvider";
 
 const icons = [Play, Rocket, Building2, ShoppingBag, Mic, Home, Briefcase];
 
 export function TrustedBy() {
+  const { site } = useContent();
   const row = site.trustedBy.map((label, i) => ({ label, Icon: icons[i % icons.length] }));
 
   return (
