@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Mail, CalendarDays, Globe, ArrowRight, LoaderCircle, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { contactSchema } from "@/lib/validators";
-import { site } from "@/data/site";
+import { getSupabase } from "@/lib/supabase";
+import { useContent } from "@/components/providers/ContentProvider";
 
 const inputCls =
   "w-full rounded-xl border border-line bg-bg px-4 py-3 text-[14.5px] text-txt outline-none transition focus:border-accent focus:ring-[3px] focus:ring-accent/15";
@@ -12,6 +13,7 @@ const inputCls =
 type Status = "idle" | "sending" | "sent" | "mailto" | "error";
 
 export function Contact() {
+  const { site } = useContent();
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -33,19 +35,26 @@ export function Contact() {
 
     setErrors({});
     setStatus("sending");
+    const d = parsed.data;
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(parsed.data),
+      // Write the lead straight to Supabase (works on static hosting like
+      // GitHub Pages, unlike the old /api route which is stripped on export).
+      const sb = getSupabase();
+      if (!sb) throw new Error("Supabase not configured");
+      const { error } = await sb.from("leads").insert({
+        name: d.name,
+        email: d.email,
+        project_type: d.projectType,
+        budget: d.budget,
+        deadline: d.deadline || null,
+        details: d.details,
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (error) throw error;
       setStatus("sent");
       form.reset();
     } catch {
-      // Static hosting (e.g. GitHub Pages) has no API — fall back to the
-      // visitor's email app with the message pre-filled.
-      const d = parsed.data;
+      // No backend reachable — fall back to the visitor's email app with the
+      // message pre-filled so the lead is never lost.
       const subject = encodeURIComponent(`Project Inquiry — ${d.projectType}`);
       const body = encodeURIComponent(
         `Name: ${d.name}\nEmail: ${d.email}\nProject Type: ${d.projectType}\nBudget: ${d.budget}\nDeadline: ${d.deadline || "-"}\n\n${d.details}`

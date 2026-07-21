@@ -2,10 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { LenisProvider } from "@/components/providers/LenisProvider";
-import { Navbar } from "@/components/layout/Navbar";
-import { BottomNav } from "@/components/layout/BottomNav";
-import { Footer } from "@/components/layout/Footer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -74,14 +70,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-svh">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
-        <ThemeProvider>
-          <LenisProvider>
-            <Navbar />
-            {children}
-            <Footer />
-            <BottomNav />
-          </LenisProvider>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

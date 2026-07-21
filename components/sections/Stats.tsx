@@ -1,8 +1,11 @@
+"use client";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { stats } from "@/data/stats";
+import { useContent } from "@/components/providers/ContentProvider";
 
 export function Stats() {
+  const { stats } = useContent();
   return (
     <section className="relative overflow-hidden bg-primary py-16 md:py-20">
       <div

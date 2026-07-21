@@ -1,7 +1,9 @@
+"use client";
+
 import { Zap, Palette, BarChart3, Search, Film, Volume2, Sparkles, Infinity } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { whyMe } from "@/data/stats";
+import { useContent } from "@/components/providers/ContentProvider";
 
 const iconMap = {
   zap: Zap,
@@ -15,6 +17,7 @@ const iconMap = {
 } as const;
 
 export function WhyMe() {
+  const { whyMe } = useContent();
   return (
     <section className="relative overflow-hidden bg-primary py-20 md:py-28">
       <div
@@ -33,7 +36,7 @@ export function WhyMe() {
         />
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {whyMe.map((w, i) => {
-            const Icon = iconMap[w.icon];
+            const Icon = iconMap[w.icon as keyof typeof iconMap] ?? Sparkles;
             return (
               <Reveal key={w.title} delay={i * 0.05}>
                 <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/10">

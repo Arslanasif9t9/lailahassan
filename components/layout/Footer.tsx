@@ -1,4 +1,6 @@
-import { site } from "@/data/site";
+"use client";
+
+import { useContent } from "@/components/providers/ContentProvider";
 
 /* Brand icons as inline SVGs (lucide no longer ships brand icons) */
 const icons: Record<string, React.ReactNode> = {
@@ -36,6 +38,7 @@ const icons: Record<string, React.ReactNode> = {
 };
 
 export function Footer() {
+  const { site } = useContent();
   return (
     <footer className="bg-primary pb-24 pt-16 text-slate-400 md:pb-0">
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { site } from "@/data/site";
+import { useContent } from "@/components/providers/ContentProvider";
 
 const fadeUp = {
   initial: { opacity: 0, y: 26 },
@@ -11,6 +11,7 @@ const fadeUp = {
 };
 
 export function Hero() {
+  const { site } = useContent();
   return (
     <header
       id="top"
