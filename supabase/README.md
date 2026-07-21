@@ -7,13 +7,18 @@ Go to <https://supabase.com> → **New project** (free tier is fine). Wait for i
 
 ## 2. Run the schema
 Open **SQL Editor** → paste the contents of [`schema.sql`](./schema.sql) → **Run**.
-This creates the `site_content` table, the `leads` table, the `media` storage
-bucket, and all Row Level Security policies. It is safe to re-run.
+This creates the `lailahassan_site_content` table, the `lailahassan_leads`
+table, the `lailahassan_media` storage bucket, and all Row Level Security
+policies. It is safe to re-run.
+
+> Everything is namespaced with the `lailahassan_` prefix so this Supabase
+> project can be shared across multiple frontends. The prefix lives in one
+> place: `PREFIX` in `lib/supabase.ts`.
 
 > If the storage-policy statements error (some projects lock down
 > `storage.objects` in SQL), create the policies from the dashboard instead:
-> **Storage → Policies → media** and allow `SELECT` for everyone, and
-> `INSERT/UPDATE/DELETE` for `authenticated`.
+> **Storage → Policies → lailahassan_media** and allow `SELECT` for everyone,
+> and `INSERT/UPDATE/DELETE` for `authenticated`.
 
 ## 3. Create the admin user (Laila's login)
 **Authentication → Users → Add user** → enter an email + password →

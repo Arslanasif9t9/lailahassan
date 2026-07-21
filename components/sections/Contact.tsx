@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Mail, CalendarDays, Globe, ArrowRight, LoaderCircle, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { contactSchema } from "@/lib/validators";
-import { getSupabase } from "@/lib/supabase";
+import { getSupabase, TABLE } from "@/lib/supabase";
 import { useContent } from "@/components/providers/ContentProvider";
 
 const inputCls =
@@ -41,7 +41,7 @@ export function Contact() {
       // GitHub Pages, unlike the old /api route which is stripped on export).
       const sb = getSupabase();
       if (!sb) throw new Error("Supabase not configured");
-      const { error } = await sb.from("leads").insert({
+      const { error } = await sb.from(TABLE.leads).insert({
         name: d.name,
         email: d.email,
         project_type: d.projectType,

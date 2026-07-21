@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Mail, LoaderCircle } from "lucide-react";
-import { getSupabase } from "@/lib/supabase";
+import { getSupabase, TABLE } from "@/lib/supabase";
 
 type Lead = {
   id: string;
@@ -22,7 +22,7 @@ export function LeadsViewer() {
   useEffect(() => {
     const sb = getSupabase();
     if (!sb) return;
-    sb.from("leads")
+    sb.from(TABLE.leads)
       .select("*")
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {

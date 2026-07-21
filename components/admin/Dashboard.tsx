@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Check, ExternalLink, LoaderCircle, LogOut, Save } from "lucide-react";
-import { getSupabase } from "@/lib/supabase";
+import { getSupabase, TABLE } from "@/lib/supabase";
 import { mergeContent, type SiteContent } from "@/data/content";
 import { TABS } from "./schema";
 import { CollectionEditor, RecordEditor } from "./fields";
@@ -34,8 +34,8 @@ export function Dashboard({ email, onSignedOut }: { email: string; onSignedOut: 
     setErr("");
     setSaved(false);
     const { error } = await sb
-      .from("site_content")
-      .upsert({ id: 1, data: content, updated_at: new Date().toISOString() });
+      .from(TABLE.content)
+      .upsert({ id: 1, data: content, updated_at: new Date().toISOString() }, { onConflict: "id" });
     setSaving(false);
     if (error) setErr(error.message);
     else {

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { ChevronDown, GripVertical, Plus, Trash2, Upload, X } from "lucide-react";
-import { getSupabase } from "@/lib/supabase";
+import { getSupabase, MEDIA_BUCKET } from "@/lib/supabase";
 
 export type FieldType = "text" | "textarea" | "number" | "image" | "tags" | "select" | "multiselect";
 
@@ -87,9 +87,9 @@ function ImageUpload({ value, onChange, accept, prefix }: { value: string; onCha
     setErr("");
     const ext = file.name.split(".").pop() || "bin";
     const path = `${prefix}/${crypto.randomUUID()}.${ext}`;
-    const { error } = await sb.storage.from("media").upload(path, file, { upsert: true, cacheControl: "3600" });
+    const { error } = await sb.storage.from(MEDIA_BUCKET).upload(path, file, { upsert: true, cacheControl: "3600" });
     if (error) setErr(error.message);
-    else onChange(sb.storage.from("media").getPublicUrl(path).data.publicUrl);
+    else onChange(sb.storage.from(MEDIA_BUCKET).getPublicUrl(path).data.publicUrl);
     setBusy(false);
   }
 

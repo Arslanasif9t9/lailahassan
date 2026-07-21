@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { defaultContent, mergeContent, type SiteContent } from "@/data/content";
-import { getSupabase } from "@/lib/supabase";
+import { getSupabase, TABLE } from "@/lib/supabase";
 
 /**
  * Holds the live site content. Initial value === the baked defaults, so the
@@ -23,7 +23,7 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
     if (!sb) return;
 
     let active = true;
-    sb.from("site_content")
+    sb.from(TABLE.content)
       .select("data")
       .eq("id", 1)
       .maybeSingle()

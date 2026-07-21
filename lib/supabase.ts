@@ -25,3 +25,15 @@ export function getSupabase(): SupabaseClient | null {
 
 /** True when the two NEXT_PUBLIC_ Supabase env vars are present at build time. */
 export const isSupabaseConfigured = Boolean(url && anonKey);
+
+/**
+ * This Supabase project is shared across several of the owner's frontends, so
+ * every table + bucket is namespaced with the project slug to keep them
+ * distinguishable. Change the prefix if you fork this site for another client.
+ */
+const PREFIX = "lailahassan";
+export const TABLE = {
+  content: `${PREFIX}_site_content`,
+  leads: `${PREFIX}_leads`,
+} as const;
+export const MEDIA_BUCKET = `${PREFIX}_media`;
